@@ -352,7 +352,7 @@
 					json_string += '"foundFacebook": "' + foundFacebook + '"}}';
 								
 				$.ajax({
-					url: "pdf-download.php",
+					url: "https://raw.githubusercontent.com/aliattrill/ocean/master/pdf-download.php",
 					dataType: "json",
 					data: { json_data: json_string },
 					type: "POST",
