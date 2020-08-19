@@ -1,0 +1,378 @@
+<div class="_form_15"></div><script src="https://oceanorthodontics.activehosted.com/f/embed.php?id=15" type="text/javascript" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		
+		// Error Submitting
+		$('form._form').submit(function(e){
+									
+			var errors = $(this).find("._error").length
+
+			if (errors > 0){
+				
+				$('html, body').animate({
+					scrollTop: $("._error").offset().top - 70
+				}, 1000);
+				
+			}
+			
+		});
+		
+		// Billing Same As Patient Information
+		$('._x36637756').append('<label style="display: inline-block !important; margin-top: 10px; margin-bottom: 14px;" id="sameas_label"><input type="checkbox" name="sameas" id="sameas" /> Billing Same as Patient Information</label>');
+		
+		$('#sameas_label').click(function(e){
+			
+			if ($('#sameas').is(':checked')){
+				
+				var name = $('input[data-name="firstname"]').val() + ' ' + $('input[data-name="lastname"]').val();
+				var email = $('input[data-name="email"]').val();
+				var address = $('textarea[data-name="address"]').val();
+				var phone = $('input[data-name="phone"]').val();
+				
+				if (name != ' '){
+					$('input[data-name="billing_name"]').val(name);
+				}
+				
+				$('input[data-name="billing_email"]').val(email);
+				$('textarea[data-name="billing_address"]').val(address);
+				$('input[data-name="billing_phone"]').val(phone);
+				
+			} else {
+				
+				$('input[data-name="billing_name"]').val('');
+				$('input[data-name="billing_email"]').val('');
+				$('textarea[data-name="billing_address"]').val('');
+				$('input[data-name="billing_phone"]').val('');
+				
+			}
+			
+		});
+		
+		// PDF Download
+		var submit_form = false;
+		
+		var firstName = "";
+		var lastName = "";
+		var emailAddress = "";
+		var physicalAddress = "";
+		var dentistName = "";
+		var schoolName = "";
+		var parentGuardianName1 = "";
+		var parentGuardianPhoneNumber1 = "";
+		var parentGuardianName2 = "";
+		var parentGuardianPhoneNumber2 = "";
+		var treatmentReason = "";
+		
+		var billingName = "";
+		var billingEmailAddress = "";
+		var billingPhysicalAddress = "";
+		var billingRelation = "";
+		var billingPhoneNumber = "";
+		var billingMobileNumber = "";
+		var billingPrivateInsurance = "";
+		var billingFund = "";
+		
+		var firstVisit = "";
+		var firstVisitDentist = "";
+		var gastricReflux = "";
+		var gastricRefluxDescribe = "";
+		var grindTeethHeadaches = "";
+		var snoringSleepApnea = "";
+		var happyWithSmile = "";
+		var suckFingerThumb = "";
+		var rheumaticFever = "";
+		var tuberculosis = "";
+		var excessiveBleeding = "";
+		var bloodDisease = "";
+		var arthritis = "";
+		var epilepsy = "";
+		var diabetes = "";
+		var highBloodPressure = "";
+		var hepatitisHIV = "";
+		var asthma = "";
+		var heartAilment = "";
+		var liverKidneyDisease = "";
+		var otherMedicalProblems = "";
+		var medicalCareMedication = "";
+		var medicalCareMedicationDetails = "";
+		var osteoporosisMedication = "";
+		var allergicDrugsMedicineLatex = "";
+		var allergicDrugsMedicineLatexDetails = "";
+		var otherKnownAllergies = "";
+		var otherKnownAllergiesDetails = "";
+		var pregnancy = "";
+		var hospitalized = "";
+		var hospitalizedDetails = "";
+		var foundFriendFamily = "";
+		var foundWebsite = "";
+		var foundGoogle = "";
+		var foundDentist = "";
+		var foundInstagram = "";
+		var foundFacebook = "";
+		
+		// Fill in values for JSON
+		$('input[data-name="firstname"]').change(function(){
+			firstName = $(this).val();
+		});
+		
+		$('input[data-name="lastname"]').change(function(){
+			lastName = $(this).val();
+		});
+		
+		$('input[data-name="email"]').change(function(){
+			emailAddress = $(this).val();
+		});
+		
+		$('._field8 textarea[data-name="address"]').change(function(){
+			physicalAddress = $(this).val();
+		});
+		
+		$('input[data-name="general_dentist"]').change(function(){
+			dentistName = $(this).val();
+		});
+		
+		$('input[data-name="school"]').change(function(){
+			schoolName = $(this).val();
+		});
+		
+		$('input[data-name="patient_guardian_name"]').change(function(){
+			parentGuardianName1 = $(this).val();
+		});
+		
+		$('._x68725919 input[data-name="phone"]').change(function(){
+			parentGuardianPhoneNumber1 = $(this).val();
+		});
+		
+		$('input[data-name="parent_guardian_name_2"]').change(function(){
+			parentGuardianName2 = $(this).val();
+		});
+		
+		$('._field10 input[data-name="phone_number"]').change(function(){
+			parentGuardianPhoneNumber2 = $(this).val();
+		});
+		
+		$('input[data-name="reason_for_seeking_treatment"]').change(function(){
+			treatmentReason = $(this).val();
+		});
+		
+		$('input[data-name="billing_name"]').change(function(){
+			billingName = $(this).val();
+		});
+		
+		$('input[data-name="billing_email"]').change(function(){
+			billingEmailAddress = $(this).val();
+		});
+		
+		$('textarea[data-name="billing_address"]').change(function(){
+			billingPhysicalAddress = $(this).val();
+		});
+		
+		$('input[data-name="relation"]').change(function(){
+			billingRelation = $(this).val();
+		});
+		
+		$('input[data-name="billing_phone"]').change(function(){
+			billingPhoneNumber = $(this).val();
+		});
+		
+		$('input[data-name="billing_mobile"]').change(function(){
+			billingMobileNumber = $(this).val();
+		});
+		
+		$('input[data-name="do_you_have_private_health_insurance"]').change(function(){
+			billingPrivateInsurance = $(this).val();
+		});
+		
+		$('input[data-name="if_yes_which_fund"]').change(function(){
+			billingFund = $(this).val();
+		});
+		
+		$('input[data-name="is_this_your_first_visit_to_an_orthodontics_centre"]').change(function(){
+			firstVisit = $(this).val();
+		});
+		
+		$('input[data-name="if_yes_who_is_your_dentist"]').change(function(){
+			firstVisitDentist = $(this).val();
+		});
+		
+		$('input[data-name="do_you_suffer_from_gastric_reflux"]').change(function(){
+			gastricReflux = $(this).val();
+		});
+		
+		$('._field34 input[data-name="if_yes_describe"]').change(function(){
+			gastricRefluxDescribe = $(this).val();
+		});
+		
+		$('input[data-name="do_you_grind_your_teeth_or_suffer_from_headaches"]').change(function(){
+			grindTeethHeadaches = $(this).val();
+		});
+		
+		$('input[data-name="do_you_suffer_from_snoring_or_sleep_apnoea"]').change(function(){
+			snoringSleepApnea = $(this).val();
+		});
+		
+		$('input[data-name="are_you_happy_with_your_smile"]').change(function(){
+			happyWithSmile = $(this).val();
+		});
+		
+		$('input[data-name="does_the_patient_suck_finger_or_thumb_or_have_a_similar_habit"]').change(function(){
+			suckFingerThumb = $(this).val();
+		});
+		
+		$('label[for="field_41Rheumatic Fever"]').click(function(){
+			rheumaticFever = "Yes";
+		});
+		
+		$('label[for="field_41Tuberculosis"]').click(function(){
+			tuberculosis = "Yes";
+		});
+		
+		$('label[for="field_41Excessive bleeding"]').click(function(){
+			excessiveBleeding = "Yes";
+		});
+		
+		$('label[for="field_41Blood disease"]').click(function(){
+			bloodDisease = "Yes";
+		});
+		
+		$('label[for="field_41Arthritis"]').click(function(){
+			arthritis = "Yes";
+		});
+		
+		$('label[for="field_41Epilepsy"]').click(function(){
+			epilepsy = "Yes";
+		});
+		
+		$('label[for="field_41Diabetes"]').click(function(){
+			diabetes = "Yes";
+		});
+		
+		$('label[for="field_41High blood pressure"]').click(function(){
+			highBloodPressure = "Yes";
+		});
+		
+		$('label[for="field_41Hepatitis or HIV"]').click(function(){
+			hepatitisHIV = "Yes";
+		});
+		
+		$('label[for="field_41Asthma"]').click(function(){
+			asthma = "Yes";
+		});
+		
+		$('label[for="field_41Heart Ailment"]').click(function(){
+			heartAilment = "Yes";
+		});
+		
+		$('label[for="field_41Liver or Kidney Disease"]').click(function(){
+			liverKidneyDisease = "Yes";
+		});
+		
+		$('input[data-name="other_medical_problems"]').change(function(){
+			otherMedicalProblems = $(this).val();
+		});
+		
+		$('input[data-name="are_you_currently_under_medical_care_or_taking_medication"]').change(function(){
+			medicalCareMedication = $(this).val();
+		});
+		
+		$('._field44 input[data-name="if_yes_what"]').change(function(){
+			medicalCareMedicationDetails = $(this).val();
+		});
+		
+		$('._field44 input[data-name="are_you_taking_osteoporosis_medication"]').change(function(){
+			osteoporosisMedication = $(this).val();
+		});
+		
+		$('input[data-name="are_you_allergic_to_any_drugs_medicines_or_latex"]').change(function(){
+			allergicDrugsMedicineLatex = $(this).val();
+		});
+		
+		$('input[data-name="if_yes_detail_allergies"]').change(function(){
+			allergicDrugsMedicineLatexDetails = $(this).val();
+		});
+		
+		$('input[data-name="do_you_have_any_other_known_allergies"]').change(function(){
+			otherKnownAllergies = $(this).val();
+		});
+		
+		$('input[data-name="if_yes_detail_these_allergies"]').change(function(){
+			otherKnownAllergiesDetails = $(this).val();
+		});
+		
+		$('input[data-name="is_there_a_possibility_that_you_could_be_pregnant"]').change(function(){
+			pregnancy = $(this).val();
+		});
+		
+		$('input[data-name="have_you_been_hospitalised_in_the_last_5_years"]').change(function(){
+			hospitalized = $(this).val();
+		});
+		
+		$('input[data-name="if_yes_tell_us_what_and_when"]').change(function(){
+			hospitalizedDetails = $(this).val();
+		});
+		
+		$('label[for="field_51Friend of family member"]').click(function(){
+			foundFriendFamily = "Yes";
+		});
+		
+		$('label[for="field_51Website"]').click(function(){
+			foundWebsite = "Yes";
+		});
+		
+		$('label[for="field_51Google"]').click(function(){
+			foundGoogle = "Yes";
+		});
+		
+		$('label[for="field_51Dentist"]').click(function(){
+			foundDentist = "Yes";
+		});
+		
+		$('label[for="field_51Instagram"]').click(function(){
+			foundInstagram = "Yes";
+		});
+		
+		$('label[for="field_51Facebook"]').click(function(){
+			foundFacebook = "Yes";
+		});
+		
+		$('#_form_15_submit').click(function(e){
+				
+			if (submit_form == false){
+				
+				e.preventDefault();
+				
+				var json_string = '{"patientInformation": {"firstName": "' + firstName + '","lastName": "' + lastName + '","emailAddress": "' + emailAddress + '","physicalAddress": "' + physicalAddress + '","dentistName": "' + dentistName + '","schoolName": "' + schoolName + '","parentGuardianName1": "' + parentGuardianName1 + '",';
+					json_string += '"parentGuardianPhoneNumber1": "' + parentGuardianPhoneNumber1 + '","parentGuardianName2": "' + parentGuardianName2 + '","parentGuardianPhoneNumber2": "' + parentGuardianPhoneNumber2 + '","treatmentReason": "' + treatmentReason + '"},"billingPartyInformation": {"name": "' + billingName + '",';
+					json_string += '"emailAddress": "' + billingEmailAddress + '","physicalAddress": "' + billingPhysicalAddress + '","relation": "' + billingRelation + '","phoneNumber": "' + billingPhoneNumber + '","mobileNumber": "' + billingMobileNumber + '","privateInsurance": "' + billingPrivateInsurance + '","fund": "' + billingFund + '"},"dentalHistory": {';
+					json_string += '"firstVisit": "' + firstVisit + '","firstVisitDentist": "' + firstVisitDentist + '","gastricReflux": "' + gastricReflux + '","gastricRefluxDescribe": "' + gastricRefluxDescribe + '","grindTeethHeadaches": "' + grindTeethHeadaches + '","snoringSleepApnea": "' + snoringSleepApnea + '","happyWithSmile": "' + happyWithSmile + '","suckFingerThumb": "' + suckFingerThumb + '","rheumaticFever": "' + rheumaticFever + '","tuberculosis": "' + tuberculosis + '",';
+					json_string += '"excessiveBleeding": "' + excessiveBleeding + '","bloodDisease": "' + bloodDisease + '","arthritis": "' + arthritis + '","epilepsy": "' + epilepsy + '","diabetes": "' + diabetes + '","highBloodPressure": "' + highBloodPressure + '","hepatitisHIV": "' + hepatitisHIV + '","asthma": "' + asthma + '","heartAilment": "' + heartAilment + '","liverKidneyDisease": "' + liverKidneyDisease + '","otherMedicalProblems": "' + otherMedicalProblems + '",';
+					json_string += '"medicalCareMedication": "' + medicalCareMedication + '","medicalCareMedicationDetails": "' + medicalCareMedicationDetails + '","osteoporosisMedication": "' + osteoporosisMedication + '","allergicDrugsMedicineLatex": "' + allergicDrugsMedicineLatex + '","allergicDrugsMedicineLatexDetails": "' + allergicDrugsMedicineLatexDetails + '","otherKnownAllergies": "' + otherKnownAllergies + '",';
+					json_string += '"otherKnownAllergiesDetails": "' + otherKnownAllergiesDetails + '","pregnancy": "' + pregnancy + '","hospitalized": "' + hospitalized + '","hospitalizedDetails": "' + hospitalizedDetails + '","foundFriendFamily": "' + foundFriendFamily + '","foundWebsite": "' + foundWebsite + '","foundGoogle": "' + foundGoogle + '","foundDentist": "' + foundDentist + '","foundInstagram": "' + foundInstagram + '",';
+					json_string += '"foundFacebook": "' + foundFacebook + '"}}';
+								
+				$.ajax({
+					url: "pdf-download.php",
+					dataType: "json",
+					data: { json_data: json_string },
+					type: "POST",
+					success: function(data) {
+						var download_link = data.response;
+						$('input[data-name="pdflink"]').val(download_link);
+						submit_form = true;						
+						$('#_form_15_submit').click();
+					},
+					error: function(data) {
+						console.log("ERROR");
+						console.log(data);
+					}
+				});
+				
+			} else {
+				// do nothing and submit form
+			}
+			
+		});
+		
+	});
+</script>
